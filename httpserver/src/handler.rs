@@ -1,10 +1,12 @@
-use http::httprequest::{self, Resource};
-use http::{httprequest::HttpRequest, httpresponse::HttpResponse};
+use http::{
+    httprequest::{HttpRequest, Resource},
+    httpresponse::HttpResponse,
+};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::env;
 use std::fs;
-use std::ops::Index;
+// use std::ops::Index;
 
 pub trait Handler {
     fn handle(req: &HttpRequest) -> HttpResponse;
@@ -32,7 +34,7 @@ pub struct OrderStatus {
 }
 
 impl Handler for PageNotFoundHandler {
-    fn handle(req: &HttpRequest) -> HttpResponse {
+    fn handle(_req: &HttpRequest) -> HttpResponse {
         HttpResponse::new("404", None, Self::load_file("404.html"))
     }
 }

@@ -88,8 +88,8 @@ impl<'a> From<HttpResponse<'a>> for String {
             temp_source.status_code(),
             temp_source.status_text(),
             temp_source.header(),
-            temp_source.body(),
             source.body.unwrap().len(),
+            temp_source.body(),
         )
     }
 }
